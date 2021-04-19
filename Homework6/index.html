@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+     
+    <!--task2-->
+    <!--<div id="test">First</div>
+    <img class="image" src="https://kubnews.ru/upload/iblock/21d/21de27a6fcd2d0e93149fd84b6d3266e.jpg" alt="Картинка собаки";-->
+      
+        <!----task3-->
+      <!---- h2>Article header</h2>      
+        <div id="text">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+        </div>
+        <p>Another text</p>-->
+
+       <!---- task 4
+            <ul id="list">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>--->
+        
+         <!---- task 5-->
+         <!--<body>
+         <h1>I'am a big header!!!</h1>
+         <div id="myDiv">
+             <p>First paragraph</p>
+             <p>Second paragraph</p>
+             <p>Third paragraph</p>
+             <p>Fourth paragraph</p>
+         </div>
+         <ul id="myList">
+             <li>Make</li>
+             <li>me</li>
+             <li>horizontal!</li>
+         </ul>
+         <span>Make me invisible, please!</span>
+         </body>-->
+ 
+         <!--task6
+         <body>
+            <input type="text" id="input1" value="Text1">
+            <input type="text" id="input2" value="Text2">
+        </body>   -->
+
+      <script>
+           //task1
+          const divById=document.getElementById("test");
+          const divByTagName=document.querySelector("div");
+          divById.innerHTML="Last"; 
+          
+          //task2
+          let images=document.images;
+          images[0].src="https://images11.popmeh.ru/upload/img_cache/737/737d82768e0b2d5f3005ffe2c8a59833_ce_1800x1800x540x0_cropped_800x800.jpeg" ;
+          
+
+          //task3
+          let elem=document.querySelectorAll("#text p");
+          for (let i=0;i<elem.length; i++){
+         document.write('Selector text '+ ': '+i + ' '+ elem[i].innerText+"<br/>");
+          }
+//task4
+         console.log(document.body.firstElementChild.firstElementChild.innerHTML);
+        console.log(document.body.firstElementChild.lastElementChild.innerHTML);
+         console.log(document.body.firstElementChild.children[1].innerHTML);
+         console.log(document.body.firstElementChild.children[3].innerHTML);
+         console.log(document.body.firstElementChild.children[2].innerHTML);
+         console.log (document.getElementById("list").children[0].innerHTML);
+         console.log (document.getElementById("list").children[4].innerHTML);
+         console.log (document.getElementById("list").children[1].innerHTML);
+         console.log (document.getElementById("list").children[3].innerHTML);
+         console.log (document.getElementById("list").children[2].innerHTML);
+    
+
+// task5*/
+    document.body.firstElementChild.style.background='green';
+    document.getElementById('myDiv').firstElementChild.style.fontWeight='bold';
+    document.getElementById('myDiv').children[1].style.color='red';
+    document.getElementById('myDiv').children[2].style.textDecoration='underline';
+    document.getElementById('myDiv').children[3].style.fontStyle='italic';
+    document.getElementById('myList').children[0].style.display='inline';
+    document.getElementById('myList').children[0].style.wordSpacing='none';
+    document.getElementById('myList').children[1].style.display='inline';
+    document.getElementById('myList').children[1].style.wordSpacing='none';
+    document.getElementById('myList').children[2].style.display='inline';
+    //for (let i ; i<myList.lenght; i++){
+    //   document.getElementById('myList').children[i].style.display='inline'
+    //}
+    let divByTagName=document.querySelector("span");
+    divByTagName.remove()                                 
+    
+
+///task6*/
+let elemText=prompt("Користувач ввів перший текст","");
+document.getElementById("input1").value=elemText
+let elemText2=prompt("Користувач ввів другий текст","");
+document.getElementById("input2").value=elemText2;
+document.getElementById('input1').value=elemText2;
+document.getElementById("input2").value=elemText  
+
+
+
+
+<body>
+		  <main class="mainClass check item"> 	
+		        <div id="myDiv">
+           <p>First paragraph</p>           
+         </div>
+       </main> 
+	    </body>
+//let body=document.createElement("body");
+
+//task7
+const newMain=document.createElement('main');
+newMain.className="mainClassCheckItem";
+document.body.prepend(newMain);
+let newDiv = document.createElement("div");
+newDiv.id="myDiv";
+newDiv.innerHTML = "<p>First paragraph</p>";
+newDiv2 = document.getElementById("myDiv");
+newMain.insertBefore(newDiv,newDiv2);
+
+      </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
