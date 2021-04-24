@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+<h1>Знайдемо тобі роботу!</h1>
+<div id="output"></div>
+<form id="ident" name="user" action="http://google.com">
+    <p id='name'><b>Ваше прізвище:</b></p>
+    <input  name="lastname" type="text" class="ident" id="lastname" placeholder="lastname:" size="40">
+    <p ><b>Ваше ім'я:</b></p>
+    <input name="firstname" type="text" id="firstname"  class="ident" placeholder="firstname:" size="40">
+    <p>
+        <label for="date">Дата народження:</label>
+        
+            <input name="dataOfBirth" type="date"  class="ident" id="dataOfBirth" name="dataOfBirth"/>    
+    </p>
+    <p><b>Освіта:</b></p>
+    <input name="education" type="text" id="education"  class="ident" placeholder="education:" size="40">
+    <p><b>На яку посаду претендуєте?:</b></p>
+    <input name="position" type="text" id="position"  class="ident" placeholder="position:" size="40">
+    <!--<input type="button" id="mybutton" value="Відправити дані">-->
+   <p><button type="button" onclick="checkOnlineState()" id="myButton">Відправити форму</button></p>k
+
+    
+</form>
+
+
+
+    <script src="script.js" ></script>
+
+</body>
+</html>
