@@ -55,7 +55,7 @@ check ("9999-1999-9999-9999")
 
 //task6
 function checkEmail (email){
-    let regExp=/^[A-Za-z0-9]+[-]?[A-Za-z0-9_]+\@[A-Za-z0-9]+\.([A-Za-z]{2,4})$/;
+    let regExp=/^[A-Za-z0-9]+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,4})+$/;
     if (regExp.test(email)) {
         alert('Email is correct!')
     }
@@ -63,7 +63,7 @@ function checkEmail (email){
         alert('Email is not correct!')
     }
    }
-   checkEmail("my_mail@gmail.com");
+   checkEmail("my_ma-il@gmail.com");
    checkEmail('#my_mail@gmail.com');
 
 //task7//
@@ -75,3 +75,6 @@ function checkEmail (email){
    }
    login('ee1.1ret3');
    login('ee1*1ret3');
+
+
+
