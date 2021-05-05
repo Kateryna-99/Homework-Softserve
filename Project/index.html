@@ -6,29 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
 </head>
 <body>
-<h1>Знайдемо тобі роботу!</h1>
-<div id="output"></div>
-<form id="ident" name="user" action="http://google.com">
-    <p id='name'><b>Ваше прізвище:</b></p>
-    <input  name="lastname" type="text" class="ident" id="lastname" placeholder="lastname:" size="40">
-    <p ><b>Ваше ім'я:</b></p>
-    <input name="firstname" type="text" id="firstname"  class="ident" placeholder="firstname:" size="40">
-    <p>
-        <label for="date">Дата народження:</label>
-        
-            <input name="dataOfBirth" type="date"  class="ident" id="dataOfBirth" name="dataOfBirth"/>    
-    </p>
-    <p><b>Освіта:</b></p>
-    <input name="education" type="text" id="education"  class="ident" placeholder="education:" size="40">
-    <p><b>На яку посаду претендуєте?:</b></p>
-    <input name="position" type="text" id="position"  class="ident" placeholder="position:" size="40">
-    <!--<input type="button" id="mybutton" value="Відправити дані">-->
-   <p><button type="button" onclick="checkOnlineState()" id="myButton">Відправити форму</button></p>k
+    <header class="header">
+        <div class="container d-flex">
+            <div class="header-logo">
+                <a href="#" class="logo-link">Logo</a>
+            </div>
+            <nav class="header-menu d-flex">
+                <a href="#" class="menu-link">about</a>
+                <a href="#" class="menu-link">form</a>
+               <!---- <a href="#" class="menu-link">reviews</a>-->
+                <a href="#" class="menu-link">contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="section" id="about">
+            <div class="container">
+                <h2>About</h2>
+            </div>
+        </section>
 
+        <section class="section" id="form">
+            <div class="container">
+                <h2>Form
+                </h2>
+                <div id="output"></div>
+<form id="ident" name="user" >
+    <p id='dat'><b>Ваше прізвище:</b></p>
+    <input  name="lastname" type="text" class="ident" id="lastname" placeholder="lastname:" >
+    <p id='dat'><b>Ваше ім'я:</b></p>
+    <input name="firstname" type="text" id="firstname"  class="ident" placeholder="firstname:" >
+    <p id='dat'>
+        <label for="date">Дата народження:</label> </p>
+            <input name="dataOfBirth" type="date"  class="ident" id="dataOfBirth" name="dataOfBirth"/>    
     
+    <p id='dat'><b>Освіта:</b></p>
+    <input name="education" type="text" id="education"  class="ident" placeholder="education:" >
+    <p id='dat'><b>Знайдіть вакансію за категоріями:</b></p>
+    <select name="direction" type="text" id="direction"  class="ident" placeholder="direction:" >
+        <option value="header" class="ident">Direction</option>
+        <option value="tech">Technical specialties</option>
+        <option value="non_tech">Non-technical specialties</option>
+        </select>
+    <select name="specialties" type="text" id="specialties"  class="ident" placeholder=":specialties" >
+
+    </select>
+        
+    <!--<input type="button" id="mybutton" value="Відправити дані">-->
+   <p><button type="button" onclick="checkOnlineState()" id="myButton">Відправити форму</button></p>
+<div id="answer"></div>
+    
+</form>
+
+
+           </div>
+        </section>
+       <!---- <section class="section" id="reviews">
+            <div class="container">
+                <h2>Reviews</h2>
+            </div>
+        </section>-->
+        <section class="section" id="contacts">
+            <div class="container">
+                <h2>Contact</h2>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>2021_KaterynaKuliavets @copyright</p>
+        </div>
+    </footer>
+<h1>Знайдемо тобі роботу в ІТ!</h1>
+
 </form>
 
 
