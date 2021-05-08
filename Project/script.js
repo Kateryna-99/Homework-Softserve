@@ -2,6 +2,8 @@
 //подія, яка реєструція при відкр.сторінки і слухає статус мережі
 //при онлайн - перевіряє локальне сховище, виводить дані на сторінку (якщо є)б
 
+//const { stringify } = require("qs");
+
 //const { emit } = require("node:cluster");
 
 //const { url } = require("node:inspector");
@@ -56,6 +58,58 @@ array[i]=inp[i].value;
 
 //створення сервера
 //відправляємо дані на сервер
+
+
+
+
+const baseUrl = 'http://localhost:3000';
+
+// гетаєм дані з серверу 
+
+async function getFromServer() {
+
+ 
+    let response = await fetch(baseUrl + '/users')
+
+    let result = await response.json()
+
+    console.log(result)
+
+}
+
+// відправляєм дані на сервер
+
+async function sendServer() {
+
+    let response = await fetch(baseUrl + '/users',
+        {
+            
+            method: 'POST',
+            body: new FormData(ident)
+        });
+    let result=await response.json(); 
+    console.log(result);
+}
+
+  /*
+
+function sendServer() {
+    const ajaxRequest = new XMLHttpRequest();
+    
+       ajaxRequest.open('POST', 'http://localhost:8080', true);
+       ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+       ajaxRequest.onreadystatechange = function() { 		 // for asynchronous  requests
+if (ajaxRequest.readyState != 4) return;			 // for asynchronous  requests
+  if (ajaxRequest.status != 201) {        
+        alert('Error ' + ajaxRequest.status + ': ' + ajaxRequest.statusText);
+  } else { 
+      document.getElementById("answer").innerHTML=ajaxRequest.responseText;
+   }
+}
+ajaxRequest.send(new FormData(ident));
+  }
+*/
+
 /*
 let form=document.forms.user;
 function sendServer(){
@@ -93,14 +147,14 @@ $.ajax({
     url: "http://127.0.0.1:8000/",
     data: data,
     headers:{'Content-type': 'application/json; charset=UTF-8',},
-    mode: 'cors',
+   
     success:function(msg){
         alert(msg);
     }
 
 })}
-*/
-  
+
+  /*
 function sendServer(){
     //ident.onclick=
 async (e)=>{
@@ -114,7 +168,7 @@ async (e)=>{
     let result=await response.json();
     alert(result.message);
 };
-}
+}*/
 //випадаючі списки для вибору потрібноі спеціальності в ІТ
 const specialArr={
     'tech':['Back-end developer', 'Front-end developer', 'Nest Engineer/QA', 'Full stack'],
@@ -141,6 +195,7 @@ function toParagraph(){
     parag.innerHTML=prime_select.options[prime_select.selectedIndex].text+','
     +special_select.options[special_select.selectedIndex].text
 }
+
 
 
 
