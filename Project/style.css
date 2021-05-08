@@ -1,0 +1,173 @@
+@font-face {
+    font-family: 'Alice';
+    src: url('./Alice/Alice-Regular.ttf');
+}
+body{
+    font-family: "Alice", sans-serif;
+    font-variation-settings: 'wght' 500;
+}
+
+h1 {
+    text-align: left;
+    color: rgb(19, 1, 1);
+    font-family: 'Alice';
+    font-weight: 1.876rem;
+    font-style: italic;
+    margin: 40px;
+    padding: 30px;;
+    
+}
+ html{
+     scroll-behavior: smooth;
+ }
+
+.container{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.d-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+.header{
+    height: 10%;
+    background-color: #ffffffb3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 10px 0;
+
+}
+
+.header-logo{
+    width: 20%;
+  /* background-color: pink;*/
+}
+.logo-link{
+font-size: 1.875rem;
+color: rgb(51, 37, 37);
+}
+
+.menu-link{
+    font-size: 1.375 rem;
+    text-transform: uppercase;
+    color: rgb(51, 37, 37);
+    border-bottom: 2px solid transparent;
+    
+
+}
+
+.menu-link:hover{
+    color: firebrick;
+}
+
+.header-menu{
+    width: 50%;
+  /* background-color: deeppink;*/
+ }
+
+
+.section{
+    height:100vh;
+    padding-top: 80px;
+}
+
+#about{
+    background-image: url('./Images/16119126_303.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   background-attachment: fixed;
+}
+
+#form{
+    background-color: rgb(232, 230, 236);
+}
+
+#contact{
+    background-image: url('./Images/photo-of-white-blank-screen-computer-and-office-equipment-is-on-the-table-modern-working-desk-concept_35674-1933.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+  
+}
+
+.ident {
+    width: 55%;
+    height: 60%;
+    background-color: rgb(238, 241, 234);
+    border: 3px solid black;
+    padding: 7px;
+    margin: 5px auto;
+    text-align: left;
+    
+}
+input  {
+	width: 30%;
+	font-size: 13px;
+	padding: 10px 0 10px 10px;
+	border: 3px solid #cecece;
+	background: #F6F6f6;
+	border-radius: 8px;
+    margin: 20px;
+}
+#direction{
+    width: 35%;
+	font-size: 13px;
+	padding: 16px 0 4px 10px;
+	border: 1px solid #cecece;
+	background: #F6F6f6;
+	border-radius: 8px;  
+}
+
+#dat{
+    font-size: 17px ;
+    padding: 15px 0 8px 15px;
+}
+
+#myButton{
+    width: 20%;
+    height: 30%px;
+    padding: 13px;
+    border: 3px solid #131111;
+    background-color: #b3b2b2;
+    margin: 15px;
+    display: inline;
+ 
+}
+
+
+#header{
+font-size: 25px;
+font-weight: bold;
+font-family: Alice;
+text-align: right;
+}
+
+#direction, specialties{
+    font-size: 15px;
+    width: 55%;
+    height: 60%;
+    background-color: rgb(238, 241, 234);
+    border: 3px solid black;
+    padding: 5px;
+    margin: 3px auto;
+    text-align: left;
+}
+
+#header1 {
+    font-size: 40px;
+    font-family: "Alice", sans-serif;
+    margin: 30px;
+ 
+}
+
