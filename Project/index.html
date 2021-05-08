@@ -14,26 +14,28 @@
     <header class="header">
         <div class="container d-flex">
             <div class="header-logo">
-                <a href="#" class="logo-link">Logo</a>
+                <a href="#" class="logo-link">WorkInIT
+                </a>
             </div>
             <nav class="header-menu d-flex">
-                <a href="#" class="menu-link">about</a>
-                <a href="#" class="menu-link">form</a>
+                <a href="#about" class="menu-link">about</a>
+                <a href="#form" class="menu-link">form</a>
                <!---- <a href="#" class="menu-link">reviews</a>-->
-                <a href="#" class="menu-link">contact</a>
+                <a href="#contact" class="menu-link">contact</a>
             </nav>
         </div>
     </header>
     <main>
         <section class="section" id="about">
             <div class="container">
-                <h2>About</h2>
+                <h2 id= "header">About</h2>
+                <h1 id="header1">We will find you a job in IT!</h1>
             </div>
         </section>
 
         <section class="section" id="form">
             <div class="container">
-                <h2>Form
+                <h2 id= "header">Form
                 </h2>
                 <div id="output"></div>
 <form id="ident" name="user" >
@@ -50,8 +52,8 @@
     <p id='dat'><b>Знайдіть вакансію за категоріями:</b></p>
     <select name="direction" type="text" id="direction"  class="ident" placeholder="direction:" >
         <option value="header" class="ident">Direction</option>
-        <option value="tech">Technical specialties</option>
-        <option value="non_tech">Non-technical specialties</option>
+        <option value="tech" class="ident">Technical specialties</option>
+        <option value="non_tech" class="ident">Non-technical specialties</option>
         </select>
     <select name="specialties" type="text" id="specialties"  class="ident" placeholder=":specialties" >
 
@@ -59,7 +61,8 @@
         
     <!--<input type="button" id="mybutton" value="Відправити дані">-->
    <p><button type="button" onclick="checkOnlineState()" id="myButton">Відправити форму</button></p>
-<div id="answer"></div>
+   <p ><button type="button" class="mybutton2" id="myButton" onclick="getFromServer()" >Отримати дані з серверу</button></p>
+   <div id="answer"></div>
     
 </form>
 
@@ -71,9 +74,9 @@
                 <h2>Reviews</h2>
             </div>
         </section>-->
-        <section class="section" id="contacts">
+        <section class="section" id="contact">
             <div class="container">
-                <h2>Contact</h2>
+                <h2  id= "header">Contact</h2>
             </div>
         </section>
     </main>
@@ -82,9 +85,9 @@
             <p>2021_KaterynaKuliavets @copyright</p>
         </div>
     </footer>
-<h1>Знайдемо тобі роботу в ІТ!</h1>
 
-</form>
+
+
 
 
 
