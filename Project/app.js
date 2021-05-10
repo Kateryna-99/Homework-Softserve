@@ -1,5 +1,5 @@
 const express = require('express');
-const app = express();
+const app = express.createServer();
 const bodyParser = require('body-parser');
 
 const port = 3000;
@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/users', users);
@@ -26,7 +26,7 @@ app.use((err, req, res, next) => {
   return res.status(500).send(err);
 });
 
-app.get('/', (req, res)=> {
+app.use('*', (req, res)=> {
   res.status(404).send({message: 'Not Found'});
 });
 
@@ -79,5 +79,47 @@ var server = http.createServer(function(req, res) {
   }
 });
 
-server.listen(8000);*/
+server.listen(8000);
 
+const express = require('express');
+const app = express();
+const multer=require('multer');
+const upload=multer();
+const bodyParser = require('body-parser');
+
+app.get('/', function(req, res) {
+  res.send('Hello');
+});
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+
+app.use(upload.array());
+app.use(express.static('public'));
+
+app.post('/', function(req, res) {
+  console.log(req.body);
+  res.send('receive');
+
+});
+
+app.listen(3000);
+const http = require('http');
+var url = require('url');
+var static = require('node-static');
+var file = new static.Server('.',{
+  cache: 0
+});
+function accept(req, res) {
+if (req.url == '/index.html') {
+file.serve(req, res);		// can set delay
+} else {
+file.serve(req, res);
+}
+}
+
+if (!module.parent){
+http.createServer(accept).listen(8080);
+console.log("Server running on port 8080");
+} else{
+  exports.accept=accept;
+}*/
