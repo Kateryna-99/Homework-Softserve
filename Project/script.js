@@ -78,9 +78,9 @@ async function getFromServer() {
     let response = await fetch(baseUrl+ '/users')
 
     let result = await response.json();
-    let users = JSON.parse(this.result);
-    console.log(users)
-    for (let i = 0; i < users.length; i++) {
+    //let users = JSON.parse(result);
+   // console.log(users)
+    for (let i = 0; i < result.length; i++) {
       document.getElementById('answer').innerHTML +=
    
     `<p> ${result[i].lastname}</p>`+
@@ -103,6 +103,7 @@ async function sendServer() {
         });
     let result = await response.json();
     console.log(result);
+    result.send
     
 };
 /*
