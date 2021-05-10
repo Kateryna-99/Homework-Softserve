@@ -2,6 +2,8 @@
 //подія, яка реєструція при відкр.сторінки і слухає статус мережі
 //при онлайн - перевіряє локальне сховище, виводить дані на сторінку (якщо є)б
 
+//const { parse } = require("node:path");
+
 //const { stringify } = require("qs");
 
 //const { emit } = require("node:cluster");
@@ -11,7 +13,7 @@
 //потім видаляє їх з localStorage
 document.addEventListener('DOMContentLoaded',function(){
         if (navigator.onLine){
-        alert("online");}
+        alert("online");
         if(localStorage.getItem('array') !==null){
             let arrays=JSON.parse(window.localStorage.getItem('array'));
             console.log(arrays);
@@ -22,10 +24,15 @@ document.addEventListener('DOMContentLoaded',function(){
             }
         }
         write();
-            localStorage.removeItem('array');
+          //  localStorage.removeItem('array');
 alert('Ви можете відправити збережену форму або оновити її!')
-                    }
-})
+                    };
+}
+ else 
+     alert("Ви ще не в мережі");
+} 
+);
+  
 
 
 //функція, яка реагує на стан мережі і повертає true false
@@ -33,6 +40,7 @@ function checkOnlineState(){
     if(navigator.onLine){
       console.log(document.forms.ident);
       sendServer();
+      localStorage.removeItem('array');
     alert ('відправити одразу на сервер');
     }
     else{   localSave();
@@ -60,8 +68,6 @@ array[i]=inp[i].value;
 //відправляємо дані на сервер
 
 
-
-
 const baseUrl = 'http://localhost:3000';
 
 // гетаєм дані з серверу 
@@ -69,46 +75,72 @@ const baseUrl = 'http://localhost:3000';
 async function getFromServer() {
 
  
-    let response = await fetch(baseUrl + '/users')
+    let response = await fetch(baseUrl+ '/users')
 
-    let result = await response.json()
+    let result = await response.json();
+    let users = JSON.parse(this.result);
+    console.log(users)
+    for (let i = 0; i < users.length; i++) {
+      document.getElementById('answer').innerHTML +=
+   
+    `<p> ${result[i].lastname}</p>`+
+    `<p> ${result[i].firstname}</p>`
+    }
+    console.log()
+    
+};
 
-    console.log(result)
-
-}
 
 // відправляєм дані на сервер
 
 async function sendServer() {
 
-    let response = await fetch(baseUrl + '/users',
+    let response = await fetch(baseUrl+ '/users' ,
         {
-            
+            mode: 'cors',
             method: 'POST',
             body: new FormData(ident)
         });
-    let result=await response.json(); 
+    let result = await response.json();
     console.log(result);
-}
-
-  /*
-
-function sendServer() {
-    const ajaxRequest = new XMLHttpRequest();
     
-       ajaxRequest.open('POST', 'http://localhost:8080', true);
-       ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-       ajaxRequest.onreadystatechange = function() { 		 // for asynchronous  requests
-if (ajaxRequest.readyState != 4) return;			 // for asynchronous  requests
-  if (ajaxRequest.status != 201) {        
-        alert('Error ' + ajaxRequest.status + ': ' + ajaxRequest.statusText);
-  } else { 
-      document.getElementById("answer").innerHTML=ajaxRequest.responseText;
-   }
-}
-ajaxRequest.send(new FormData(ident));
+};
+/*
+const baseUrl = 'http://localhost:3000'
+function sendServer() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', baseUrl + '/users');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+  
+    let lastnameVal = document.getElementById('lastname').value;
+    let firstnameVal = document.getElementById('firstname').value;
+    res=JSON.stringify({
+        lastname: lastnameVal,
+        firstname: firstnameVal
+    });
+    xhr.send(res);
+   
   }
-*/
+
+  
+function getFromServer() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', baseUrl + '/users');
+    xhr.onload = function () {
+      if (this.status === 200) {
+        document.getElementById('answer').innerHTML = '';
+        let users = JSON.parse(res);
+    for (let i = 0; i < users.length; i++) {
+      document.getElementById('answer').innerHTML +=
+    `<p> ${users[i].lastname}</p>`+
+    `<p> ${users[i].firstname}</p>`
+    }   
+      } 
+    };
+    xhr.send();
+  }*/
+  
+
 
 /*
 let form=document.forms.user;
@@ -116,7 +148,7 @@ function sendServer(){
     //let form=document.forms.form;
     let formData=new FormData(document.getElementsByTagName("form")[0]);
     let request=new XMLHttpRequest();
-    request.open("POST", form.action);
+    request.open("POST", "https://jsonplaceholder.typicode.com" );
     alert("тут ок")
     request.onreadystatechange=function(){
         if (request.readyState==4 && request.status==200){
@@ -126,7 +158,7 @@ function sendServer(){
 }
     request.send(formData);
 }
-*
+
 function sendServer(){
 $(function () {
     $("#ident").click(function (event) {
@@ -140,11 +172,40 @@ $(function () {
   })
 }
 
+function sendServer() {
+    let object={};
+    let form=new FormData(ident)
+    form.forEach(function(value,key){
+        object[key]=value;
+    });
+    let json=JSON.stringify(object);
+    console.log(json);
+    const express = require("express");
+const bodyParser = require("body-parser");
+  
+const app = express();
+  
+// создаем парсер для данных application/x-www-form-urlencoded
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+ 
+app.get('https://jsonplaceholder.typicode.com', urlencodedParser, function (request, response) {
+    response.sendFile(__dirname + "/index.html");
+});
+app.post('https://jsonplaceholder.typicode.com', urlencodedParser, function (request, response) {
+    if(!request.body) return response.sendStatus(400);
+    console.log(request.body);
+    response.send(`${request.body.userName} - ${request.body.userAge}`);
+});
+  
+app.get("/", function(request, response){
+    response.send("Главная страница");
+})};
+/*
 function sendServer(){
 let data=$('#ident').serialize();
 $.ajax({
     type:"POST",
-    url: "http://127.0.0.1:8000/",
+    url: "https://jsonplaceholder.typicode.com",
     data: data,
     headers:{'Content-type': 'application/json; charset=UTF-8',},
    
@@ -154,21 +215,8 @@ $.ajax({
 
 })}
 
-  /*
-function sendServer(){
-    //ident.onclick=
-async (e)=>{
-    e.preventDefault();
-    let response=await fetch('http://127.0.0.1:8000',
-    {
-        mode: 'cors',
-        method: 'POST',
-        body: new FormData(ident)
-    });
-    let result=await response.json();
-    alert(result.message);
-};
-}*/
+  */
+
 //випадаючі списки для вибору потрібноі спеціальності в ІТ
 const specialArr={
     'tech':['Back-end developer', 'Front-end developer', 'Nest Engineer/QA', 'Full stack'],
@@ -197,6 +245,10 @@ function toParagraph(){
 }
 
 
+//додати параграф з інфо About після  <h1 id="header1">We will find you a job in IT!</h1>
 
-
+const newP=document.createElement('p');
+newP.className='info';
+newP.innerHTML="We are the best recruitment company.For 10 years we have been recruiting staff for the largest IT companies!";
+header1.after(newP);
 
