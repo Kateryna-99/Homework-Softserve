@@ -146,6 +146,17 @@ input  {
 }
 
 
+
+#myButton{
+    width: 20%;
+    height: 10%px;
+    padding: 10px;
+}
+#myButton:hover{
+    background:rgb(173, 144, 144);
+}
+
+
 #header{
 font-size: 25px;
 font-weight: bold;
@@ -171,3 +182,17 @@ text-align: right;
  
 }
 
+.info{
+    font-size: 26px;
+    font-weight: 25px;
+    text-indent: 3ch;
+   
+    margin: 10px;
+    width: 400px;
+    color: rgb(44, 36, 36);
+}
+
+.info1{
+    font-size: 20px;
+   
+}
