@@ -2,21 +2,13 @@
 //подія, яка реєструція при відкр.сторінки і слухає статус мережі
 //при онлайн - перевіряє локальне сховище, виводить дані на сторінку (якщо є)б
 
-//const { parse } = require("node:path");
-
-//const { stringify } = require("qs");
-
-//const { emit } = require("node:cluster");
-
-//const { url } = require("node:inspector");
-
 //потім видаляє їх з localStorage
 document.addEventListener('DOMContentLoaded',function(){
         if (navigator.onLine){
         alert("online");
         if(localStorage.getItem('array') !==null){
             let arrays=JSON.parse(window.localStorage.getItem('array'));
-            console.log(arrays);
+           // console.log(arrays);
             function write(){
                 inp=document.getElementsByClassName('ident'); 
             for (let i=0; i<arrays.length;i++){
@@ -29,7 +21,7 @@ alert('Ви можете відправити збережену форму аб
                     };
 }
  else 
-     alert("Ви ще не в мережі");
+     alert("Ви не в мережі");
 } 
 );
   
@@ -38,10 +30,10 @@ alert('Ви можете відправити збережену форму аб
 //функція, яка реагує на стан мережі і повертає true false
 function checkOnlineState(){
     if(navigator.onLine){
-      console.log(document.forms.ident);
+     // console.log(document.forms.ident);
       sendServer();
       localStorage.removeItem('array');
-    alert ('відправити одразу на сервер');
+    alert ('Відправляємо одразу на сервер');
     }
     else{   localSave();
 
@@ -58,7 +50,7 @@ function localSave(){
        for (let i=0;i<inp.length; i++){
 array[i]=inp[i].value;
        }
-       console.log(array);//забрати
+    //   console.log(array);//забрати
    }
    save(); 
    localStorage.setItem("array",JSON.stringify(array));                             //створюємо масив з інпутів
@@ -67,27 +59,31 @@ array[i]=inp[i].value;
 //створення сервера
 //відправляємо дані на сервер
 
-
 const baseUrl = 'http://localhost:3000';
-
 // гетаєм дані з серверу 
-
 async function getFromServer() {
-
- 
     let response = await fetch(baseUrl+ '/users')
-
+//console.log('gh')
     let result = await response.json();
     //let users = JSON.parse(result);
    // console.log(users)
-    for (let i = 0; i < result.length; i++) {
+ //  console.log(result)
+//typeof(result)
+    for (let i = 0; i < response.length; i++) {
+        lastname = document.getElementById('lastname').value;
+        firstname = document.getElementById('firstname').value;
+        dataOfBirth=document.getElementById('dataOfBirth').value;
+        education=document.getElementById('education').value;
+        direction=document.getElementById('direction').value;
+        specialties=document.getElementById('specialties').value;
       document.getElementById('answer').innerHTML +=
-   
     `<p> ${result[i].lastname}</p>`+
-    `<p> ${result[i].firstname}</p>`
+    `<p> ${result[i].firstname}</p>`+
+    `<p> ${result[i].dataOfBirth}</p>`+
+    `<p> ${result[i].education}</p>`+
+    `<p> ${result[i].direction}</p>`+
+    `<p> ${result[i].specialties}</p>`
     }
-    console.log()
-    
 };
 
 
@@ -101,11 +97,16 @@ async function sendServer() {
             method: 'POST',
             body: new FormData(ident)
         });
-    let result = await response.json();
-    console.log(result);
-    result.send
     
+  let result = await response.body;
+    
+   // typeof(response);
+   // result.send
+    console.log (result)
 };
+
+
+
 /*
 const baseUrl = 'http://localhost:3000'
 function sendServer() {
@@ -143,80 +144,6 @@ function getFromServer() {
   
 
 
-/*
-let form=document.forms.user;
-function sendServer(){
-    //let form=document.forms.form;
-    let formData=new FormData(document.getElementsByTagName("form")[0]);
-    let request=new XMLHttpRequest();
-    request.open("POST", "https://jsonplaceholder.typicode.com" );
-    alert("тут ок")
-    request.onreadystatechange=function(){
-        if (request.readyState==4 && request.status==200){
-        document.getElementById("output").innerHTML=request.responseText;
-        console.log(this.responseText)
-    }  
-}
-    request.send(formData);
-}
-
-function sendServer(){
-$(function () {
-    $("#ident").click(function (event) {
-      event.preventDefault();
-      $.post("/handler", $(this).serialize(),
-      function(data){
-          $('#answer')/append(data);
-      });
-      $('#formOut').append(trHTML);
-    })
-  })
-}
-
-function sendServer() {
-    let object={};
-    let form=new FormData(ident)
-    form.forEach(function(value,key){
-        object[key]=value;
-    });
-    let json=JSON.stringify(object);
-    console.log(json);
-    const express = require("express");
-const bodyParser = require("body-parser");
-  
-const app = express();
-  
-// создаем парсер для данных application/x-www-form-urlencoded
-const urlencodedParser = bodyParser.urlencoded({extended: false});
- 
-app.get('https://jsonplaceholder.typicode.com', urlencodedParser, function (request, response) {
-    response.sendFile(__dirname + "/index.html");
-});
-app.post('https://jsonplaceholder.typicode.com', urlencodedParser, function (request, response) {
-    if(!request.body) return response.sendStatus(400);
-    console.log(request.body);
-    response.send(`${request.body.userName} - ${request.body.userAge}`);
-});
-  
-app.get("/", function(request, response){
-    response.send("Главная страница");
-})};
-/*
-function sendServer(){
-let data=$('#ident').serialize();
-$.ajax({
-    type:"POST",
-    url: "https://jsonplaceholder.typicode.com",
-    data: data,
-    headers:{'Content-type': 'application/json; charset=UTF-8',},
-   
-    success:function(msg){
-        alert(msg);
-    }
-
-})}
-
-  */
 
 //випадаючі списки для вибору потрібноі спеціальності в ІТ
 const specialArr={
@@ -253,3 +180,12 @@ newP.className='info';
 newP.innerHTML="We are the best recruitment company.For 10 years we have been recruiting staff for the largest IT companies!";
 header1.after(newP);
 
+
+//валідація вводу form
+function valid() {
+    
+let value;
+lastname = document.getElementById('lastname').value;
+document.getElementById('answer').innerHTML="Вы ввели: "+lastname;
+console.log(lastname)
+}
